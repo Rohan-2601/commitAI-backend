@@ -9,6 +9,7 @@ import generateRoute from "./routes/generate.js";
 import { authMiddleware } from "./middleware/auth.js";
 import { rateLimitUser } from "./middleware/rateLimitUser.js";
 
+
 dotenv.config();
 const logger = pino({ level: "info" });
 
@@ -28,6 +29,7 @@ mongoose
 
 // Routes
 app.use("/api/auth", authRoutes);
+
 
 // Protected AI route
 app.use("/api/generate", authMiddleware, rateLimitUser, generateRoute);
