@@ -5,8 +5,6 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
-// Step 1: Redirect to GitHub login
-// Step 1: Redirect to GitHub login
 router.get("/github", (req, res) => {
   const callback = req.query.callback;
   if (!callback) return res.status(400).send("Missing callback URL");
@@ -37,7 +35,7 @@ router.get("/github/callback", async (req, res) => {
   try {
     // Exchange code for token
     const tokenRes = await axios.post(
-      `https://github.com/login/oauth/access_token`,
+      "https://github.com/login/oauth/access_token",
       {
         client_id: process.env.GITHUB_CLIENT_ID,
         client_secret: process.env.GITHUB_CLIENT_SECRET,
@@ -85,3 +83,4 @@ router.get("/github/callback", async (req, res) => {
 
 
 export default router;
+
